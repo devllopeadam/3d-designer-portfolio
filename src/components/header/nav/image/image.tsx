@@ -20,6 +20,7 @@ const Index: React.FC<IndexProps> = ({ src, alt, isActive }) => {
       className={styles.imageContainer}
     >
       <Image
+        key={src}
         src={src}
         width={400}
         height={400}

@@ -37,8 +37,8 @@ const config = {
   githubRepo: "",
   get ogImg() {
     return publicSiteUrl
-      ? `${publicSiteUrl}/assets/seo/og-image.png`
-      : "/assets/seo/og-image.png";
+      ? `${publicSiteUrl}/assets/nav-link-previews/landing.png`
+      : "/assets/nav-link-previews/landing.png";
   },
   social: {
     behance: "https://www.behance.net/3dexp",
