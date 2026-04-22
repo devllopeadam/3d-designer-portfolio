@@ -4,20 +4,18 @@ import { motion } from "motion/react";
 
 import "@splidejs/react-splide/css";
 
-import Image from "next/image";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./ui/dialog";
 import { useState } from "react";
+import ProjectMedia, { isVideoMedia } from "./project-media";
 
 const SlideShow = ({ images }: { images: string[] }) => {
-  const [selectedImage, setSelectedImage] = useState('')
+  const [selectedMedia, setSelectedMedia] = useState("");
   return (
     <>
       <Splide
@@ -36,15 +34,19 @@ const SlideShow = ({ images }: { images: string[] }) => {
             <SplideSlide key={idx} className="flex items-center">
               <motion.button
                 className="relative block w-full cursor-zoom-in"
-                onClick={() => { setSelectedImage(image) }}
-              //layout animation
+                onClick={() => {
+                  setSelectedMedia(image);
+                }}
               >
-                <Image
+                <ProjectMedia
                   src={image}
                   alt="screenshot"
                   width={1000}
                   height={1000}
                   className="w-full rounded-lg h-auto"
+                  autoPlay
+                  loop
+                  muted
                 />
                 <motion.div
                   className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 text-white/90 text-sm backdrop-blur-[2px]"
@@ -64,26 +66,28 @@ const SlideShow = ({ images }: { images: string[] }) => {
           <div className="splide__progress__bar"></div>
         </div>
       </Splide>
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage('')}>
-        <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-transparent"
-          onClick={() => setSelectedImage('')} >
+      <Dialog open={!!selectedMedia} onOpenChange={() => setSelectedMedia("")}>
+        <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-transparent">
           <DialogHeader className="sr-only">
-            <DialogTitle>Screenshot</DialogTitle>
-            <DialogDescription>Zoomed screenshot</DialogDescription>
+            <DialogTitle>Project media</DialogTitle>
+            <DialogDescription>Expanded project media preview</DialogDescription>
           </DialogHeader>
           <motion.div>
-            <Image
-              src={selectedImage || ''}
-              alt="screenshot"
+            <ProjectMedia
+              src={selectedMedia || ""}
+              alt="project media"
               width={1080}
               height={1080}
               className="w-full rounded-lg h-auto max-h-[90vh]"
+              controls={isVideoMedia(selectedMedia)}
+              autoPlay={isVideoMedia(selectedMedia)}
+              loop={isVideoMedia(selectedMedia)}
+              muted={isVideoMedia(selectedMedia)}
             />
           </motion.div>
         </DialogContent>
       </Dialog>
     </>
-
   );
 };
 export default SlideShow;

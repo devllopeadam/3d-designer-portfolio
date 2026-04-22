@@ -3,32 +3,35 @@
 import { useInView } from "motion/react";
 import React, { useRef } from "react";
 import { Button } from "../ui/button";
-import { SiGithub, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { SiBehance, SiGithub, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
 import Link from "next/link";
 
-const BUTTONS = [
-  {
+const BUTTONS: { name: string; href: string; icon: React.ReactNode }[] = [];
+
+if (config.social.behance) {
+  BUTTONS.push({
+    name: "Behance",
+    href: config.social.behance,
+    icon: <SiBehance size={24} color={"#fff"} />,
+  });
+}
+
+if (config.social.github) {
+  BUTTONS.push({
     name: "Github",
     href: config.social.github,
-    icon: <SiGithub size={"24"} color={"#fff"} />,
-  },
-  {
+    icon: <SiGithub size={24} color={"#fff"} />,
+  });
+}
+
+if (config.social.linkedin) {
+  BUTTONS.push({
     name: "LinkedIn",
     href: config.social.linkedin,
-    icon: <SiLinkedin size={"24"} color={"#fff"} />,
-  },
-  {
-    name: "Twitter",
-    href: config.social.twitter,
-    icon: <SiX size={"24"} color={"#fff"} />,
-  },
-  {
-    name: "Instagram",
-    href: config.social.instagram,
-    icon: <SiInstagram size={"24"} color={"#fff"} />,
-  },
-];
+    icon: <SiLinkedin size={24} color={"#fff"} />,
+  });
+}
 
 const SocialMediaButtons = () => {
   const ref = useRef<HTMLDivElement>(null);

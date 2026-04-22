@@ -13,8 +13,7 @@ export default function Footer() {
           animate="enter"
           exit="exit"
         >
-          {/* space */}
-          <span>Inspired by:</span> Studio Lumio
+          <span>Discipline:</span> 3D Design
         </motion.li>
       </ul>
       <ul>
@@ -25,7 +24,7 @@ export default function Footer() {
           animate="enter"
           exit="exit"
         >
-          <span>Typography:</span> Inter
+          <span>Focus:</span> Product + Architecture
         </motion.li>
       </ul>
       <ul>
@@ -36,7 +35,7 @@ export default function Footer() {
           animate="enter"
           exit="exit"
         >
-          <span>Images:</span> Unsplash
+          <span>Profile:</span> Behance
         </motion.li>
       </ul>
       <ul>
@@ -47,7 +46,7 @@ export default function Footer() {
           animate="enter"
           exit="exit"
         >
-          Blog
+          Mechanical Design
         </motion.li>
         <motion.li
           custom={[0.3, 0]}
@@ -56,7 +55,7 @@ export default function Footer() {
           animate="enter"
           exit="exit"
         >
-          Newsletter
+          Architectural Visualization
         </motion.li>
       </ul>
     </div>

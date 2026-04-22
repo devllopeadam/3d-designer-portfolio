@@ -1,6 +1,6 @@
 import SocketContextProvider from "@/contexts/socketio";
+import { ThemeProvider } from "@/components/theme-provider";
 import Preloader from "./preloader";
-import { ThemeProvider } from "./theme-provider";
 import { Toaster } from "./ui/toaster";
 
 import { TooltipProvider } from "./ui/tooltip";

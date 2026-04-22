@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import {
   ResponsiveDialog,
@@ -14,6 +13,7 @@ import { motion } from "motion/react";
 
 import projects, { Project } from "@/data/projects";
 import { SectionHeader } from "./section-header";
+import ProjectMedia from "@/components/project-media";
 
 import SectionWrapper from "../ui/section-wrapper";
 
@@ -39,12 +39,15 @@ const ProjectCard = ({ project }: { project: Project }) => {
             className="relative w-[400px] h-auto rounded-lg overflow-hidden"
             style={{ aspectRatio: "3/2" }}
           >
-            <Image
+            <ProjectMedia
               className="absolute w-full h-full top-0 left-0 hover:scale-[1.05] transition-all"
               src={project.src}
               alt={project.title}
               width={300}
               height={300}
+              autoPlay
+              loop
+              muted
             />
             <div className="absolute w-full h-1/2 bottom-0 left-0 bg-gradient-to-t from-background via-background/85 to-transparent pointer-events-none">
               <div className="flex flex-col h-full items-start justify-end p-6">
@@ -102,7 +105,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 {project.skills.frontend?.length > 0 && (
                   <div className="flex flex-col items-center md:items-start gap-2">
                     <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
-                      Frontend
+                      Toolchain
                     </span>
                     <FloatingDock items={project.skills.frontend} />
                   </div>
@@ -110,7 +113,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 {project.skills.backend?.length > 0 && (
                   <div className="flex flex-col items-center md:items-start gap-2">
                     <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
-                      Backend
+                      Highlights
                     </span>
                     <FloatingDock items={project.skills.backend} />
                   </div>
